@@ -1,6 +1,6 @@
 {
   "name": "d3b-get-tumor-intensity-values",
-  "label": "Extract mean/median intensity values from tumor regions.",
+  "label": "Get intensity value statistics from tumor regions.",
   "author": "D3b-TIRU",
   "maintainer": "D3b-TIRU <flywheel@d3b.center>",
   "description": "This tool extracts intensity values and updates Flywheel file metadata.",
@@ -17,7 +17,7 @@
   },
   "custom": {
     "flywheel": {
-      "suite": "OpenSlide"
+      "suite": "D3b"
     },
     "gear-builder": {
       "category": "utility",
