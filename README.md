@@ -1,6 +1,6 @@
-# SDK gear to extract slide metadata
+# SDK gear to calculate intensity value statistics for tumor regions
 
-This gear uses OpenSlide to extract file metadata from a pathology slide file and inject it as file-level metadata on Flywheel.
+This gear extracts intensity value statistics from an input image, within enhancing, non-enhancing, and whole-tumor (enhancing+non-enhancing+cystic) regions and injects the results as file-level metadata on Flywheel.
 
 ## Usage
 
@@ -8,7 +8,7 @@ Run at the file-level.
 
 ### Inputs
 
-* input-file: File to process 
+* input-file: Image to process 
 
 ### Configuration
 
@@ -18,4 +18,4 @@ Run at the file-level.
 
 Current limitations of the gear are as follows:
 
-* this gear was tested with Aperio SVS files only, future testing may be necessary for additional file types (although OpenSlide can handle multiple file types)
+* tumor segmentation file must be within same acquisition as input image and have "ManualSeg" in file name
