@@ -1,0 +1,47 @@
+{
+  "name": "d3b-get-tumor-intensity-values",
+  "label": "Extract mean/median intensity values from tumor regions.",
+  "author": "D3b-TIRU",
+  "maintainer": "D3b-TIRU <flywheel@d3b.center>",
+  "description": "This tool extracts intensity values and updates Flywheel file metadata.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/d3b-center/fw-d3b-get-tumor-intensity-values", 
+  "version": "0.0.0",
+  "command": "poetry run python run.py",
+  "config": {
+    "debug": {
+      "default": false,
+      "description": "Log debug messages",
+      "type": "boolean"
+    }
+  },
+  "custom": {
+    "flywheel": {
+      "suite": "OpenSlide"
+    },
+    "gear-builder": {
+      "category": "utility",
+      "image": "chop.flywheel.io/d3b-get-tumor-intensity-values:0.0.0"
+    }
+  },
+  "inputs": {
+    "api-key": {
+      "base": "api-key",
+      "read-only": true
+    },
+    "input-file": {
+        "base": "file",
+        "description": "Input file.",
+        "optional": false
+    }
+  },
+  "environment": {
+    "PATH": "/opt/poetry/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "PYTHON_VERSION": "3.9.7",
+    "PIP_NO_CACHE_DIR": "0",
+    "POETRY_HOME": "/opt/poetry",
+    "POETRY_VERSION": "1.1.11",
+    "POETRY_VIRTUALENVS_CREATE": "false",
+    "FLYWHEEL": "/flywheel/v0"
+  }
+}
