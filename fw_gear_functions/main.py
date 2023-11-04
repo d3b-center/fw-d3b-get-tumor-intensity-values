@@ -42,23 +42,23 @@ def process(input_path, seg_filename):
     im_enhancing = im * enhancing_mask
     enhancing_voxels = im_enhancing[im_enhancing!=0]
     if len(enhancing_voxels) > 0: # if there are remaining voxels
-        file_dictionary['TumorSegIntensity.enhancing_mean'] = np.mean(enhancing_voxels)
-        file_dictionary['TumorSegIntensity.enhancing_median'] = np.median(enhancing_voxels)
-        file_dictionary['TumorSegIntensity.enhancing_stdev'] = np.std(enhancing_voxels)
+        file_dictionary['TumorSegIntensity']['enhancing_mean'] = np.mean(enhancing_voxels)
+        file_dictionary['TumorSegIntensity']['enhancing_median'] = np.median(enhancing_voxels)
+        file_dictionary['TumorSegIntensity']['enhancing_stdev'] = np.std(enhancing_voxels)
 
     im_nonenhancing = im * nonenhancing_mask
     nonenhancing_voxels = im_nonenhancing[im_nonenhancing!=0]
     if len(nonenhancing_voxels) > 0: # if there are remaining voxels
-        file_dictionary['TumorSegIntensity.nonenhancing_mean'] = np.mean(nonenhancing_voxels)
-        file_dictionary['TumorSegIntensity.nonenhancing_median'] = np.median(nonenhancing_voxels)
-        file_dictionary['TumorSegIntensity.nonenhancing_stdev'] = np.std(nonenhancing_voxels)
+        file_dictionary['TumorSegIntensity']['nonenhancing_mean'] = np.mean(nonenhancing_voxels)
+        file_dictionary['TumorSegIntensity']['nonenhancing_median'] = np.median(nonenhancing_voxels)
+        file_dictionary['TumorSegIntensity']['nonenhancing_stdev'] = np.std(nonenhancing_voxels)
 
     im_wt = im * wt_mask
     wt_voxels = im_wt[im_wt!=0]
     if len(wt_voxels) > 0: # if there are remaining voxels
-        file_dictionary['TumorSegIntensity.wt_mean'] = np.mean(wt_voxels)
-        file_dictionary['TumorSegIntensity.wt_median'] = np.median(wt_voxels)
-        file_dictionary['TumorSegIntensity.wt_stdev'] = np.std(wt_voxels)
+        file_dictionary['TumorSegIntensity']['wt_mean'] = np.mean(wt_voxels)
+        file_dictionary['TumorSegIntensity']['wt_median'] = np.median(wt_voxels)
+        file_dictionary['TumorSegIntensity']['wt_stdev'] = np.std(wt_voxels)
 
     fe = {"info": file_dictionary}
     return fe
