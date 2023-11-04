@@ -6,7 +6,7 @@
   "description": "This tool extracts intensity values and updates Flywheel file metadata.",
   "license": "Apache-2.0",
   "source": "https://github.com/d3b-center/fw-d3b-get-tumor-intensity-values", 
-  "version": "0.0.0",
+  "version": "0.0.1",
   "command": "poetry run python run.py",
   "config": {
     "debug": {
@@ -21,7 +21,7 @@
     },
     "gear-builder": {
       "category": "utility",
-      "image": "chop.flywheel.io/d3b-get-tumor-intensity-values:0.0.0"
+      "image": "chop.flywheel.io/d3b-get-tumor-intensity-values:0.0.1"
     }
   },
   "inputs": {
