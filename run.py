@@ -20,9 +20,8 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     file_ = context.get_input("input-file")
 
     # get parent project
-    acquisition = context.client.get_acquisition(file_["hierarchy"]["id"])
+    acq = context.client.get_acquisition(file_["hierarchy"]["id"])
     # project = context.client.get(acquisition.parents.project)
-    acq = fw.get(acquisition.id)
 
     # download the tumor segmentation file from the same acquisition
     for file in acq.files:
