@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fw_gear_get-tumor-intensity-values"
+name = "fw_gear_functions"
 version = "0.0.0"
 description = "Extract tumor intensity values"
 authors = ["D3b-TIRU <flywheel@d3b.center>"]
