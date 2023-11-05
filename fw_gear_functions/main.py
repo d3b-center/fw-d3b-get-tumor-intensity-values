@@ -27,7 +27,7 @@ def process(input_path, seg_filename):
         dict: Dictionary containing the file meta.
     """
 
-    file_dictionary = {}
+    file_dictionary = {'TumorSegIntensity':{}}
 
     im = nib.load(input_path).get_fdata()
     im = np.rint(im)
