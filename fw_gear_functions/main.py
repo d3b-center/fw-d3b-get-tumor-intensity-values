@@ -37,6 +37,8 @@ def process(input_path, seg_filename):
 
     enhancing_mask = np.logical_and(mask >= 1, mask <= 1)
     nonenhancing_mask = np.logical_and(mask >= 2, mask <= 2)
+    cyst_mask = np.logical_and(mask >= 3, mask <= 3)
+    edema_mask = np.logical_and(mask >= 4, mask <= 4)
     wt_mask = np.logical_and(mask >= 1, mask <= 3)
 
     im_enhancing = im * enhancing_mask
@@ -45,6 +47,7 @@ def process(input_path, seg_filename):
         file_dictionary['TumorSegIntensity']['enhancing_mean'] = np.mean(enhancing_voxels)
         file_dictionary['TumorSegIntensity']['enhancing_median'] = np.median(enhancing_voxels)
         file_dictionary['TumorSegIntensity']['enhancing_stdev'] = np.std(enhancing_voxels)
+        log.info('Added ENHANCING tumor statistics')
 
     im_nonenhancing = im * nonenhancing_mask
     nonenhancing_voxels = im_nonenhancing[im_nonenhancing!=0]
@@ -52,6 +55,23 @@ def process(input_path, seg_filename):
         file_dictionary['TumorSegIntensity']['nonenhancing_mean'] = np.mean(nonenhancing_voxels)
         file_dictionary['TumorSegIntensity']['nonenhancing_median'] = np.median(nonenhancing_voxels)
         file_dictionary['TumorSegIntensity']['nonenhancing_stdev'] = np.std(nonenhancing_voxels)
+        log.info('Added NON-ENHANCING tumor statistics')
+
+    im_cyst = im * cyst_mask
+    cyst_voxels = im_cyst[im_cyst!=0]
+    if len(cyst_voxels) > 0: # if there are remaining voxels
+        file_dictionary['TumorSegIntensity']['cyst_mean'] = np.mean(cyst_voxels)
+        file_dictionary['TumorSegIntensity']['cyst_median'] = np.median(cyst_voxels)
+        file_dictionary['TumorSegIntensity']['cyst_stdev'] = np.std(cyst_voxels)
+        log.info('Added CYST statistics')
+
+    im_edema = im * edema_mask
+    edema_voxels = im_edema[im_edema!=0]
+    if len(edema_voxels) > 0: # if there are remaining voxels
+        file_dictionary['TumorSegIntensity']['edema_mean'] = np.mean(edema_voxels)
+        file_dictionary['TumorSegIntensity']['edema_median'] = np.median(edema_voxels)
+        file_dictionary['TumorSegIntensity']['edema_stdev'] = np.std(edema_voxels)
+        log.info('Added EDEMA statistics')
 
     im_wt = im * wt_mask
     wt_voxels = im_wt[im_wt!=0]
@@ -59,6 +79,7 @@ def process(input_path, seg_filename):
         file_dictionary['TumorSegIntensity']['wt_mean'] = np.mean(wt_voxels)
         file_dictionary['TumorSegIntensity']['wt_median'] = np.median(wt_voxels)
         file_dictionary['TumorSegIntensity']['wt_stdev'] = np.std(wt_voxels)
+        log.info('Added WHOLE TUMOR (enhance + non-enhance) statistics')
 
     fe = {"info": file_dictionary}
     return fe
